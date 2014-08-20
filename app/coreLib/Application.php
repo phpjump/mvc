@@ -6,22 +6,57 @@ use app\controllers;
 
 class Application {
 
+	/**
+	 * The default controller.
+	 *
+	 * @var string  $defaultController
+	 */
 	protected $defaultController = 'HomeController';
 
+	/**
+	 * The current controller instance.
+	 *
+	 * @var app\controllers\Controller  $controllerInstance
+	 */
 	protected $controllerInstance = null;
 
+	/**
+	 * The default method.
+	 *
+	 * @var string  $defaultMethod
+	 */
 	protected $defaultMethod = 'index';
 
+	/**
+	 * Is the current route a default setting.
+	 *
+	 * @var boolean  $defaultRoute
+	 */
 	protected $defaultRoute = true;
 
+	/**
+	 * The parameters from a given URL.
+	 *
+	 * @var array  $params
+	 */
 	protected $params = [];
 
+	/**
+	 * Create a route for application.
+	 *
+	 * @return void
+	 */
 	public function __construct() {
 
 		$this->route();
 		
 	}
 
+	/**
+	 * Direct the applications route.
+	 *
+	 * @return void
+	 */
 	public function route() {
 
 		$url = $this->parseUrl();
@@ -39,9 +74,10 @@ class Application {
 	}
 
 	/**
-	*This is to route the app
-	*
-	**/
+	 * Parse a given URL.
+	 *
+	 * @return array
+	 */
 	public function parseUrl() {
 
 		if (isset($_GET['url'])) {
@@ -58,7 +94,12 @@ class Application {
 		
 	}
 
-
+	/**
+	 * Extract and manipulate a given array value.
+	 *
+	 * @param array $url
+	 * @return array
+	 */
 	public function direct($url) {
 
 		if (isset($url[0])){
@@ -85,13 +126,19 @@ class Application {
 		}
 	}
 
+	/**
+	 * Check whether given value is an actual controller.
+	 *
+	 * @param string $url
+	 * @return boolean
+	 */
 	public function isController($url) {
 
 		$newController = ucfirst($url).'Controller';
 
 		$controllerFile = ucfirst($url).'Controller.php';
 		
-		if (file_exists('../app/controllers/'.$controllerFile)) {
+		if (file_exists('../app/controllers/' . $controllerFile)) {
 
 			$this->defaultController = $newController;
 
@@ -105,7 +152,12 @@ class Application {
 		}
 	}
 
-
+	/**
+	 * Check whether a method exists for a given value.
+	 *
+	 * @param array $url
+	 * @return array
+	 */
 	public function checkMethod($url) {
 
 		if (isset($url[1])) {
@@ -131,7 +183,11 @@ class Application {
 		return $url;
 	}
 
-
+	/**
+	 * Create an instance of the controller.
+	 *
+	 * @return void
+	 */
 	public function createInstance() {
 
 		$class = 'app\controllers\\'.$this->defaultController;
@@ -139,21 +195,33 @@ class Application {
 		$this->controllerInstance = new $class();
 	}
 
+	/**
+	 * Acccess the methods for cocntroller instance.
+	 *
+	 * @param array $url
+	 * @return void
+	 */
 	public function addBehaviour($url) {
 
 		if ($this->defaultRoute == false) $this->params = $url ? array_values($url) : [];
-			
 
 		call_user_func_array([$this->controllerInstance, $this->defaultMethod],$this->params);	
 		
 	}
 
-	public function unsetValue($arr, $index){
+	/**
+	 * Unset the given position of a given array.
+	 *
+	 * @param array $array
+	 * @param int $index
+	 * @return array
+	 */
+	public function unsetValue($arrayUrl, $index){
 			
-		unset($arr[$index]);
+		unset($arrayUrl[$index]);
 
 
-		return $arr;
+		return $arrayUrl;
 	}
 }
 
