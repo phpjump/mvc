@@ -4,7 +4,7 @@
 use app\coreLib\InterfaceAcquire;
 use app\coreLib\Base;
 
-class Blog extends Base implements InterfaceAcquire {
+class Home extends Base implements InterfaceAcquire {
 
 	/**
 	 * not finished
@@ -13,8 +13,9 @@ class Blog extends Base implements InterfaceAcquire {
 	 */
 	public function __construct() {
 
-		echo '<br>i am the ///blog model'; //just for development
+		echo '<br>i am the home model'; //just for development
 
 	}
 
+	
 }

@@ -1,7 +1,8 @@
 <?php namespace app\controllers;
 
 
-use app\models;
+use app\models; 
+
 require '../app/config/config.php';
 class Controller {
 
@@ -24,8 +25,11 @@ class Controller {
 	 *
 	 * @return void
 	 */
-	public function __construct() {
+	public function __construct($model) {
+
 		$this->openConnection();
+
+		$this->acquireModel($model);
 	}
 
 	 /**
@@ -50,13 +54,24 @@ class Controller {
 	 * @return void
 	 */
 	public function acquireModel($model){
-		$model = ucfirst($model);
+		
+		
 		$model = 'app\models\\'.$model;
-
-		$model = new $model();
-		$this->model = $model;
+		
+		$this->model = new $model();
+		 
+		
+		
 	}
 
+
+
+	public function modelExists($model){
+
+		$exists = file_exists($model) ? true : false ;
+
+		return $exists;
+	}
 	 /**
 	 * Aquire a list from model.
 	 *
@@ -77,9 +92,9 @@ class Controller {
 	 * @param  string $param
 	 * @return array
 	 */
-	public function getSelected($table, $param){
+	public function getSelected($table, $params = []){
 		
-		$result = $this->model->getRecord($this->db, $table, $param);
+		$result = $this->model->getRecord($this->db, $table, $params);
 		
 		return $result;
 	}

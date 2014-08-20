@@ -1,6 +1,6 @@
 <?php namespace app\controllers;
 
-use app\models;
+use app\models; 
 
 
 class BlogController extends Controller {
@@ -12,9 +12,12 @@ class BlogController extends Controller {
 	 * @param  string $var2
 	 * @return void
 	 */
-	public function index($val1 = null, $val2 = null) {
-
-		$this->acquireModel('Blog');
+	public function index($value1 = null, $value2 = null) {
+		$params = array(
+			'first' 	=> $value1,
+			'second'	=> $value2
+			);
+		//$this->acquireModel('Blog');
 
 		$result = $this->acquireList('blgs');
 		//needs to be sent to the view
@@ -33,12 +36,15 @@ class BlogController extends Controller {
 	 * @return void | null
 	 */
 	public function show($value1 = null, $value2 = null) {
-
-		$this->acquireModel('Blog');
+		$params = array(
+			'first' 	=> $value1,
+			'second'	=> $value2
+			);
+		//$this->acquireModel('Blog');
 
 		if(!isset($value1))	return null;
 		
-		$result = $this->getSelected('blgs', $value1);
+		$result = $this->getSelected('blgs', $params);
 
 		if(isset($result)) echo '<br>' . $result->title . '<br>'; // <= this needs to be sent to the view
 	

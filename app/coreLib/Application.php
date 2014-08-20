@@ -7,7 +7,7 @@ use app\controllers;
 class Application {
 
 	/**
-	 * The default controller.
+	 * The name of default controller.
 	 *
 	 * @var string  $defaultController
 	 */
@@ -21,7 +21,7 @@ class Application {
 	protected $controllerInstance = null;
 
 	/**
-	 * The default method.
+	 * The name of default method.
 	 *
 	 * @var string  $defaultMethod
 	 */
@@ -40,6 +40,13 @@ class Application {
 	 * @var array  $params
 	 */
 	protected $params = [];
+
+	/**
+	 * Name of associated model.
+	 *
+	 * @var string  $model
+	 */
+	private $model = 'Home';
 
 	/**
 	 * Create a route for application.
@@ -103,6 +110,7 @@ class Application {
 	public function direct($url) {
 
 		if (isset($url[0])){
+			
 			if ($this->isController($url[0])) {
 				
 				$url = $this->unsetValue($url, 0);
@@ -129,16 +137,18 @@ class Application {
 	/**
 	 * Check whether given value is an actual controller.
 	 *
-	 * @param string $url
+	 * @param string $uri
 	 * @return boolean
 	 */
-	public function isController($url) {
+	public function isController($uri) {
 
-		$newController = ucfirst($url).'Controller';
+		$newController = ucfirst($uri).'Controller';
 
-		$controllerFile = ucfirst($url).'Controller.php';
+		$controllerFile = ucfirst($uri).'Controller.php';
 		
 		if (file_exists('../app/controllers/' . $controllerFile)) {
+
+			$this->model = ucfirst($uri);
 
 			$this->defaultController = $newController;
 
@@ -192,7 +202,7 @@ class Application {
 
 		$class = 'app\controllers\\'.$this->defaultController;
 
-		$this->controllerInstance = new $class();
+		$this->controllerInstance = new $class($this->model);
 	}
 
 	/**
