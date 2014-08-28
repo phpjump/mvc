@@ -2,6 +2,7 @@
 
 
 use app\models; 
+use app\coreLib\Factory; 
 
 require '../app/config/config.php';
 class Controller {
@@ -11,14 +12,14 @@ class Controller {
 	 *
 	 * @var \PDO  $db
 	 */
-	protected $db;
+	private $db;
 
 	 /**
 	 * Instance of current model.
 	 *
 	 * @var app\coreLib\IntefaceAcquire  $db
 	 */
-	protected $model;
+	private $model;
 
 	 /**
 	 * class constructor.
@@ -58,7 +59,7 @@ class Controller {
 		
 		$model = 'app\models\\'.$model;
 		
-		$this->model = new $model();
+		$this->model = Factory::createInstance($model);
 		 
 		
 		

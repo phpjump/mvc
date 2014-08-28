@@ -17,7 +17,7 @@ class BlogController extends Controller {
 			'first' 	=> $value1,
 			'second'	=> $value2
 			);
-		//$this->acquireModel('Blog');
+		
 
 		$result = $this->acquireList('blgs');
 		//needs to be sent to the view
@@ -40,7 +40,7 @@ class BlogController extends Controller {
 			'first' 	=> $value1,
 			'second'	=> $value2
 			);
-		//$this->acquireModel('Blog');
+		
 
 		if(!isset($value1))	return null;
 		

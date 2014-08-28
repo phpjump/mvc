@@ -11,35 +11,35 @@ class Application {
 	 *
 	 * @var string  $defaultController
 	 */
-	protected $defaultController = 'HomeController';
+	private $defaultController = 'HomeController';
 
 	/**
 	 * The current controller instance.
 	 *
 	 * @var app\controllers\Controller  $controllerInstance
 	 */
-	protected $controllerInstance = null;
+	private $controllerInstance = null;
 
 	/**
 	 * The name of default method.
 	 *
 	 * @var string  $defaultMethod
 	 */
-	protected $defaultMethod = 'index';
+	private $defaultMethod = 'index';
 
 	/**
 	 * Is the current route a default setting.
 	 *
 	 * @var boolean  $defaultRoute
 	 */
-	protected $defaultRoute = true;
+	private $defaultRoute = true;
 
 	/**
 	 * The parameters from a given URL.
 	 *
 	 * @var array  $params
 	 */
-	protected $params = [];
+	private $params = [];
 
 	/**
 	 * Name of associated model.
@@ -49,12 +49,18 @@ class Application {
 	private $model = 'Home';
 
 	/**
+	 * Intance of the factory class.
+	 *
+	 * @var app\coreLib\Factory  $factory
+	 */
+	private $factory;
+
+	/**
 	 * Create a route for application.
 	 *
 	 * @return void
 	 */
 	public function __construct() {
-
 		$this->route();
 		
 	}
@@ -72,7 +78,7 @@ class Application {
 
 		if($this->controllerInstance == null) {
 
-			$this->createInstance();
+			$this->getInstance();
 
 			$method = $this->defaultMethod;
 
@@ -88,7 +94,7 @@ class Application {
 	public function parseUrl() {
 
 		if (isset($_GET['url'])) {
-
+		echo $_GET['url'];
 			$url = rtrim($_GET['url'], '/');
 
 			$url = filter_var($url, FILTER_SANITIZE_URL);
@@ -115,7 +121,7 @@ class Application {
 				
 				$url = $this->unsetValue($url, 0);
 
-				$this->createInstance();
+				$this->getInstance();
 
 				$url = $this->checkMethod($url);
 
@@ -132,7 +138,7 @@ class Application {
 		return $url;
 			
 		}
-	}
+	} 
 
 	/**
 	 * Check whether given value is an actual controller.
@@ -198,11 +204,11 @@ class Application {
 	 *
 	 * @return void
 	 */
-	public function createInstance() {
+	public function getInstance() {
 
 		$class = 'app\controllers\\'.$this->defaultController;
 
-		$this->controllerInstance = new $class($this->model);
+		$this->controllerInstance = Factory::createInstance($class, $this->model);
 	}
 
 	/**
