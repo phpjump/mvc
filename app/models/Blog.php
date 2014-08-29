@@ -13,7 +13,7 @@ class Blog extends Base implements InterfaceAcquire {
 	 */
 	public function __construct() {
 
-		echo '<br>i am the ///blog model'; //just for development
+		echo '<br>i am the blog model'; //just for development
 
 	}
 
