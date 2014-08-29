@@ -65,14 +65,19 @@ class Controller {
 		
 	}
 
-
-
+	 /**
+	 * Check whether actual model exists of a given string.
+	 *
+	 * @param string $model
+	 * @return boolean
+	 */
 	public function modelExists($model){
 
 		$exists = file_exists($model) ? true : false ;
 
 		return $exists;
 	}
+	
 	 /**
 	 * Aquire a list from model.
 	 *
