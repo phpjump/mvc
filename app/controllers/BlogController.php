@@ -14,8 +14,8 @@ class BlogController extends Controller {
 	 */
 	public function index($value1 = null, $value2 = null) {
 		$params = array(
-			'first' 	=> $value1,
-			'second'	=> $value2
+			'first'   => $value1,
+			'second'  => $value2
 			);
 		
 
@@ -37,8 +37,8 @@ class BlogController extends Controller {
 	 */
 	public function show($value1 = null, $value2 = null) {
 		$params = array(
-			'first' 	=> $value1,
-			'second'	=> $value2
+			'first'   => $value1,
+			'second'  => $value2
 			);
 		
 
