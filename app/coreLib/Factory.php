@@ -16,11 +16,8 @@ class Factory {
 	 * @return app\controllers\Controller
 	 */
 	public static function createInstance($class, $model = null) {
-
-		if($model != null) 
-			$instance = new $class($model);
-		else
-			$instance = new $class();	
+		
+		$instance = ($model != null) ? new $class($model) : new $class();
 
 
 		return $instance;
