@@ -56,13 +56,10 @@ class Controller {
 	 */
 	public function acquireModel($model){
 		
-		
 		$model = 'app\models\\'.$model;
 		
 		$this->model = Factory::createInstance($model);
-		 
-		
-		
+	
 	}
 
 	 /**
