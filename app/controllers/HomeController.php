@@ -3,10 +3,15 @@
 class HomeController extends Controller {
 	
 	
-
+	private $db;
+	
+	private $model;
+	
 	public function index($val1 = null, $val2 = null) {
 		
-		$this->acquireModel('Home');
+		$this->db = $this->openConnection();
+		
+		$this->model = $this->acquireModel('Home');
 
 	}
 	
