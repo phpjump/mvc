@@ -2,7 +2,6 @@
 
 use app\models; 
 
-
 class BlogController extends Controller {
 
 	/**
@@ -18,7 +17,6 @@ class BlogController extends Controller {
 			'second'  => $value2
 			);
 		
-
 		$result = $this->acquireList('blgs');
 		//needs to be sent to the view
 		 foreach($result as $rs){
@@ -26,7 +24,6 @@ class BlogController extends Controller {
 		   echo $rs->title.'<br>';
 		 }
 	}
-
 
 	/**
 	 * Aquire a model for a the Blog controller.
@@ -41,13 +38,11 @@ class BlogController extends Controller {
 			'second'  => $value2
 			);
 		
-
 		if(!isset($value1))	return null;
 		
 		$result = $this->getSelected('blgs', $params);
 
 		if(isset($result)) echo '<br>' . $result->title . '<br>'; // <= this needs to be sent to the view
 	
-		 
 	}
 }
