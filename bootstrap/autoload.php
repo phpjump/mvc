@@ -1,14 +1,11 @@
 <?php 
-/*
-|====================================================================
-|
-|--------------------------------------------------------------------
-|	The autoload function is used to load the programs dependencies
-|---------------------------------------------------------------------
-|
-|=====================================================================
-|
-*/
+
+/**
+ * Load the programs dependencies
+ * 
+ * @param string $className
+ * @return void
+ */
 function autoload($className)
 {
     $className = ltrim($className, '\\');
