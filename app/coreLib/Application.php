@@ -60,8 +60,9 @@ class Application {
 	 *
 	 * @return void
 	 */
-	public function __construct() {
-		$this->route();
+	public function __construct(Factory $factory) {
+		
+		$this->factory = $factory;
 		
 	}
 
@@ -71,10 +72,6 @@ class Application {
 	 * @return void
 	 */
 	public function route() {
-
-		$url = $this->parseUrl();
-
-		$url = $this->direct($url);
 
 		if($this->controllerInstance == null) {
 

@@ -13,3 +13,9 @@ use app\coreLib\Factory;
  */
 $app = new Application(new Factory);
 
+$url = $app->parseUrl();
+
+$app->direct($url);
+
+$app->route();
+
