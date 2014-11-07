@@ -1,8 +1,8 @@
-<?php namespace app\models;
+<?php namespace models;
 
 
-use app\coreLib\InterfaceAcquire;
-use app\coreLib\Base;
+use coreLib\InterfaceAcquire;
+use coreLib\Base;
 
 class Home extends Base implements InterfaceAcquire {
 
