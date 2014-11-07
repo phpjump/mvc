@@ -1,4 +1,4 @@
-<?php namespace app\controllers;
+<?php namespace controllers;
 
 use app\models; 
 
