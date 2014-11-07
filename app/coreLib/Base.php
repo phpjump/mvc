@@ -1,4 +1,4 @@
-<?php namespace app\coreLib;
+<?php namespace coreLib;
 
 class Base {
 
