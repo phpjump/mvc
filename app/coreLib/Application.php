@@ -200,7 +200,7 @@ class Application {
 	 */
 	public function getInstance() {
 
-		$class = 'app\controllers\\'.$this->defaultController;
+		$class = 'controllers\\'.$this->defaultController;
 
 		$this->controllerInstance = Factory::createInstance($class, $this->model);
 	}
