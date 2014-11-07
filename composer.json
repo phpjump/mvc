@@ -5,7 +5,8 @@
 			"controllers\\": "app/controllers",
 			"coreLib\\": "app/coreLib",
 			"models\\": "app/models",
-			"views\\": "app/views"
+			"views\\": "app/views",
+			"bootstrap\\": "app/bootstrap"
 		}
 		
 	}
