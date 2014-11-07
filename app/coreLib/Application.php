@@ -1,7 +1,4 @@
-<?php namespace app\coreLib; 
-
-
-use app\controllers;
+<?php namespace coreLib; 
 
 
 class Application {
