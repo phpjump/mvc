@@ -1,8 +1,8 @@
-<?php namespace app\controllers;
+<?php namespace controllers;
 
 
-use app\models; 
-use app\coreLib\Factory; 
+use models; 
+use coreLib\Factory; 
 
 require '../app/config/config.php';
 class Controller {
