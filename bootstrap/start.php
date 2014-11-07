@@ -1,10 +1,8 @@
-<?php 
+<?php namespace bootstrap;
 
-
-
-use app\coreLib\Application;
-use app\controllers\HomeController;
-use app\coreLib\Factory;
+use coreLib\Application;
+use controllers\HomeController;
+use coreLib\Factory;
 
 /**
  * Application instance
