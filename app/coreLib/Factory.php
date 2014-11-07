@@ -1,6 +1,6 @@
-<?php namespace app\coreLib;
+<?php namespacecoreLib;
 
-use app\controllers\Controller;
+use controllers\Controller;
 
 class Factory {
 
