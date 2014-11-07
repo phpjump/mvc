@@ -1,0 +1,12 @@
+{
+	"autoload":{
+		"psr-4": {
+			"config\\": "app/config",
+			"controllers\\": "app/controllers",
+			"coreLib\\": "app/coreLib",
+			"models\\": "app/models",
+			"views\\": "app/views"
+		}
+		
+	}
+}
