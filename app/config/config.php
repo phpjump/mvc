@@ -1,5 +1,5 @@
 <?php 
-namespace app\config;
+namespace config;
 
 define('URL', 'http://localhost/mvc/');
 define('DB_TYPE', 'mysql');
