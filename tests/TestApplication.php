@@ -1,5 +1,5 @@
 <?php 
-require '../autoload.php';
+require '/../vendor/autoload.php';
 use app\coreLib\Application;
 use app\coreLib\Base;
 use app\coreLib\Factory;
