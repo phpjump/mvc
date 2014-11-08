@@ -1,7 +1,8 @@
 <?php namespace controllers;
 
 
-use models; 
+use models\Blog; 
+use models\Home; 
 use coreLib\Factory; 
 
 require '../app/config/config.php';
