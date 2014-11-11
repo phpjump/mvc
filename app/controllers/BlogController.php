@@ -1,6 +1,7 @@
 <?php namespace controllers;
 
-use app\models; 
+use models\Blog; 
+use models\Home; 
 
 class BlogController extends Controller {
 
